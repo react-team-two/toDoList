@@ -29,8 +29,10 @@ class App extends React.Component {
   };
 
   deleteItem = (i) => {
-    const filterArr = this.state.tasks.filter((element, index) => index !== i);
+    const list = JSON.parse(localStorage.getItem("toDoList"));
+    const filterArr = list.filter((element, index) => index !== i);
     this.setState({ tasks: filterArr });
+    localStorage.setItem("toDoList", JSON.stringify(filterArr));
   };
 
   render() {
