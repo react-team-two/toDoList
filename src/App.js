@@ -19,13 +19,14 @@ class App extends React.Component {
     let arr = this.state.tasks;
     arr.push(this.state.taskValue);
     this.setState({ tasks: arr });
-    const state = this.state.tasks;
+    const state = this.state.tasks[this.state.tasks.length-1];
     // Put the object into storage
     const localStorageList = JSON.parse(localStorage.getItem("toDoList"));
     localStorage.setItem(
       "toDoList",
-      JSON.stringify([...localStorageList, ...state])
+      JSON.stringify([...localStorageList, state])
     );
+    
   };
 
   deleteItem = (i) => {
