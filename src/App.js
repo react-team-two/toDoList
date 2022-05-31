@@ -6,7 +6,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       tasks: [],
-      taskValue: ''
+      task: 
+        { taskValue: "",
+        checked: false,
+        }
+      
     }
   }
 
@@ -30,6 +34,7 @@ class App extends React.Component {
     return (
       <section className="container">
         <form className="head" onSubmit={this.handleSubmit}>
+         <input className="btn-head" type="checkbox"/>
           <input type="text" placeholder="enter you task" className="inpHead" onChange={this.handleChange} />
           <button className="btnHead" > add </button>
         </form>
