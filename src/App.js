@@ -46,7 +46,6 @@ class App extends React.Component {
     }
   }
 
-
   handleChange = (field, event) => {
     let fields = this.state.fields;
     fields[field] = event.target.value;
@@ -85,17 +84,18 @@ class App extends React.Component {
     return (
       <>
         <img className="feather" src={feather} alt="feather" />
-
         <section className="container">
           <form className="head" onSubmit={this.handleSubmit.bind(this)}>
             <input
               type="text"
               placeholder="enter you task"
               className="inpHead"
-              onChange={this.handleChange.bind(this,"name")}
-              value={this.state.fields["name"]}/>
-            <span className="span-error" style={{ color: "red" }}>{this.state.errors["name"]}</span>
-
+              onChange={this.handleChange.bind(this, "name")}
+              value={this.state.fields["name"]}
+            />
+            <span className="span-error" style={{ color: "red" }}>
+              {this.state.errors["name"]}
+            </span>
             <button className="btnHead"> add </button>
           </form>
           <div className="lists">
@@ -113,7 +113,7 @@ class App extends React.Component {
                     </button>
                   </div>
                 </div>
-                <img className="attach" src={attach} alt="attach"/>
+                <img className="attach" src={attach} alt="attach" />
               </div>
             ))}
           </div>
