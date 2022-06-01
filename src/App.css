@@ -1,69 +1,77 @@
-.container{
-    width: 70vw;
-    border: 2px solid var(--main-color);
-    border-radius: 5px;
-    margin: 40px auto;
-    padding: 2rem;
+.container {
+  width: 70vw;
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  margin: 40px auto;
+  padding: 2rem;
 }
 
 /* start head */
-
-.btn-head{
-width: 30px;
-height: 15px;
+.container {
+  position: relative;
 }
-.inpHead{
-    width: 70%;
-    border: 1px solid var(--main-color);
-    border-right: 0px ;
-    border-radius: 3px 0 0 3px;
-    padding: 5px;
-    outline: none;
+.btn-head {
+  width: 30px;
+  height: 25px;
+  position: absolute;
+  left: 2px;
+  top: 33px;
 }
-
-.btnHead{
-   width: 15%;
-    border-radius: 0px 3px 3px 0px;
-    padding: 5px; 
-    border: none;
-    border: 1px solid var(--main-color);
-    color: var(--main-color);
-    border-left: 0px;
-
+.inpHead {
+  width: 85%;
+  border: 1px solid var(--main-color);
+  border-right: 0px;
+  border-radius: 3px 0 0 3px;
+  padding: 5px;
+  outline: none;
 }
 
+.btnHead {
+  width: 15%;
+  border-radius: 0px 3px 3px 0px;
+  padding: 5px;
+  border: none;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  border-left: 0px;
+}
 
 /* start lists */
 
-.lists{
-    margin-top: 10px;
+.lists {
+  margin-top: 10px;
 }
-.listItem{
-    border: 1px solid var(--sub-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    padding: 3px;
-    border-radius: 3px;
-
-}
-
-.btnEdit{
-    border: 1px solid #080;
-    color: #080;
-    background: none;
-    padding: 2px 5px;
-    border-radius: 3px;
-    margin: 3px;
+.listItem {
+  border: 1px solid var(--sub-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 3px;
+  border-radius: 3px;
 }
 
-.btnDelete{
-    border: 1px solid #f00;
-    color: #f00;
-    background: none;
-    padding: 2px 5px;
-    border-radius: 3px;
-    margin: 3px;
+.btnEdit {
+  border: 1px solid #080;
+  color: #080;
+  background: none;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin: 3px;
+}
 
+.btnDelete {
+  border: 1px solid #f00;
+  color: #f00;
+  background: none;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin: 3px;
+}
+.listItem .checked {
+  text-decoration: line-through;
+}
+
+.listItem .notchecked {
+  text-decoration: none;
 }
