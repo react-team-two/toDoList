@@ -85,7 +85,16 @@
   margin: 3px;
 
 }
-
+.btnDone{
+  border: 1px solid #c43636;
+  color: #fff;
+  background: green;
+  padding: 8px 5px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  margin: 3px; 
+  display: none;
+}
 .feather {
   width: 300px;
   position: fixed;
