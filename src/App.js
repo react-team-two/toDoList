@@ -70,6 +70,31 @@ class App extends React.Component {
     this.setState({ tasks: filterArr });
     localStorage.setItem("toDoList", JSON.stringify(filterArr));
   };
+  
+  /**Start... Edit Task */
+  editItem =(i)=>{
+    let tasktitle=this.refs["taskName"];
+      tasktitle.setAttribute("contenteditable","true");
+    
+      let check = this.refs["doneEdit"];
+      check.style.display='block';
+  }
+  checkDone =(i) =>{
+
+    const listofItem = JSON.parse(localStorage.getItem("toDoList"));
+    const valuetoEdit = listofItem.filter((element,index)=> index ===i);
+
+    let tasktitle=this.refs["taskName"];
+    tasktitle.setAttribute("contenteditable","false");
+    listofItem.splice(listofItem.indexOf(valuetoEdit[0]),1,tasktitle.textContent); 
+    localStorage.setItem('toDoList', JSON.stringify(listofItem));
+
+    let check = this.refs["doneEdit"];
+    check.style.display='none';
+
+    this.setState({ tasks: listofItem });
+  }
+/**End... Edit Task */
 
   render() {
     const list = JSON.parse(localStorage?.getItem("toDoList")) || [];
@@ -98,10 +123,14 @@ class App extends React.Component {
             {list.map((element, index) => (
               <div className="listItem">
                 <div className="box">
-                  <p> {element}</p>
+                   <div>
+                     <p ref="taskName"> {element}</p>
+                     <button className="btnDone" ref="doneEdit" onClick={()=>this.checkDone(index)}>Done</button>
+                   </div>
+
                   <div>
-                    <button className="btnEdit">edit</button>
-                    <button
+                    <button ref='btnEdit' className="btnEdit" onClick={()=> this.editItem(index)}>edit</button>
+                    <button ref='btnDelete'
                       className="btnDelete"
                       onClick={() => this.deleteItem(index)}
                     >
