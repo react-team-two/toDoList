@@ -11,6 +11,7 @@
 /* start head */
 form {
   height: 60px;
+  display: flex;
 }
 
 .inpHead {
@@ -102,4 +103,7 @@ p,
 
 button {
   cursor: pointer;
+}
+.span-error {
+  width: 25%;
 }
