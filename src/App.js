@@ -26,26 +26,11 @@ class App extends React.Component {
     }
 
 
- if (fields["name"] === this.state.taskValue) {
-      formIsValid = false;
-      errors["name"] = "unique";
-    }
-
-
-
-    // if (typeof fields["name"] !== "undefined") {
-    //   if (!fields["name"].match(/^[a-zA-Z]+$/)) {
-    //     formIsValid = false;
-    //     errors["name"] = "Only letters";
-    //   }
-    // }
-
     this.setState({ errors: errors });
     return formIsValid;
   }
 
   handleChange = (field, event) => {
-   
     let fields = this.state.fields;
     fields[field] = event.target.value;
     this.setState({ fields });
@@ -58,7 +43,6 @@ class App extends React.Component {
       alert("Form has errors.");
     }
 
- 
     let arr = this.state.tasks;
     arr.push(this.state.taskValue);
     this.setState({ tasks: arr });
@@ -78,31 +62,34 @@ class App extends React.Component {
     this.setState({ tasks: filterArr });
     localStorage.setItem("toDoList", JSON.stringify(filterArr));
   };
-  
+
   /**Start... Edit Task */
-  editItem =(i)=>{
-    let tasktitle=this.refs["taskName"];
-      tasktitle.setAttribute("contenteditable","true");
-    
-      let check = this.refs["doneEdit"];
-      check.style.display='block';
-  }
-  checkDone =(i) =>{
-
-    const listofItem = JSON.parse(localStorage.getItem("toDoList"));
-    const valuetoEdit = listofItem.filter((element,index)=> index ===i);
-
-    let tasktitle=this.refs["taskName"];
-    tasktitle.setAttribute("contenteditable","false");
-    listofItem.splice(listofItem.indexOf(valuetoEdit[i]),0,tasktitle.textContent); 
-    localStorage.setItem('toDoList', JSON.stringify(listofItem));
+  editItem = (i) => {
+    let tasktitle = this.refs["taskName"];
+    tasktitle.setAttribute("contenteditable", "true");
 
     let check = this.refs["doneEdit"];
-    check.style.display='none';
+    check.style.display = "block";
+  };
+  checkDone = (i) => {
+    const listofItem = JSON.parse(localStorage.getItem("toDoList"));
+    const valuetoEdit = listofItem.filter((element, index) => index === i);
+
+    let tasktitle = this.refs["taskName"];
+    tasktitle.setAttribute("contenteditable", "false");
+    listofItem.splice(
+      listofItem.indexOf(valuetoEdit[i]),
+      1,
+      tasktitle.textContent
+    );
+    localStorage.setItem("toDoList", JSON.stringify(listofItem));
+
+    let check = this.refs["doneEdit"];
+    check.style.display = "none";
 
     this.setState({ tasks: listofItem });
-  }
-/**End... Edit Task */
+  };
+  /**End... Edit Task */
 
   render() {
     const list = JSON.parse(localStorage?.getItem("toDoList")) || [];
@@ -116,32 +103,52 @@ class App extends React.Component {
               type="text"
               placeholder="enter you task"
               className="inpHead"
-              onChange={this.handleChange.bind(this,"name")}
-              value={this.state.fields["name"]}/>
+              onChange={this.handleChange.bind(this, "name")}
+              value={this.state.fields["name"]}
+            />
 
             <button className="btnHead"> add </button>
           </form>
-          <span className="span-error" style={{ color: "red" }}>{this.state.errors["name"]}</span>
+          <span className="span-error">
+            <mark>{this.state.errors["name"]}</mark>
+          </span>
 
           <div className="lists">
             {list.map((element, index) => (
               <div className="listItem">
                 <div className="box">
-                   <div>
-                     <p ref="taskName"> <input type={"checkbox"}/> {element}</p>
-                     <button className="btnDone" ref="doneEdit" onClick={()=>this.checkDone(index)}>Done</button>
-                   </div>
+                  <div>
+                    <p ref="taskName">
+                      {" "}
+                      <input type={"checkbox"} /> {element}
+                    </p>
+                    <button
+                      className="btnDone"
+                      ref="doneEdit"
+                      onClick={() => this.checkDone(index)}
+                    >
+                      Done
+                    </button>
+                  </div>
 
                   <div>
-                    <button ref='btnEdit' className="btnEdit" onClick={()=> this.editItem(index)}>edit</button>
-                    <button ref='btnDelete'
+                    <button
+                      ref="btnEdit"
+                      className="btnEdit"
+                      onClick={() => this.editItem(index)}
+                    >
+                      edit
+                    </button>
+                    <button
+                      ref="btnDelete"
                       className="btnDelete"
-                      onClick={() => this.deleteItem(index)}>
+                      onClick={() => this.deleteItem(index)}
+                    >
                       delete
                     </button>
                   </div>
                 </div>
-                <img className="attach" src={attach} alt="attach"/>
+                <img className="attach" src={attach} alt="attach" />
               </div>
             ))}
           </div>
