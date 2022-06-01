@@ -9,7 +9,7 @@
 }
 
 /* start head */
-form {
+.head {
   height: 60px;
   display: flex;
 }
@@ -22,6 +22,7 @@ form {
   padding: 0 1.5rem;
   outline: none;
   height: 100%;
+  font-size: 1rem;
 }
 
 .btnHead {
@@ -55,7 +56,7 @@ form {
   margin-top: 10px;
   border-radius: 3px;
   padding: 3px 3px 3px 1.5rem;
-  height: 45px;
+  min-height: 45px;
   background-color: #fff;
   box-shadow: 0px 5px 10px #9a622d;
 }
@@ -85,7 +86,7 @@ form {
 
 }
 
-img {
+.feather {
   width: 300px;
   position: fixed;
   top: 50%;
@@ -106,4 +107,16 @@ button {
 }
 .span-error {
   width: 25%;
+}
+.attach {
+  width: 30px;
+  display: none;
+  transform: rotate(14deg);
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
