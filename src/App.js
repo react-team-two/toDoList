@@ -10,15 +10,56 @@ class App extends React.Component {
     this.state = {
       tasks: [],
       taskValue: "",
+      fields: {},
+      errors: {},
     };
   }
+  handleValidation() {
+    let fields = this.state.fields;
+    let errors = {};
+    let formIsValid = true;
 
-  handleChange = (event) => {
+    //name
+    if (!fields["name"]) {
+      formIsValid = false;
+      errors["name"] = "Cannot be empty";
+    }
+
+    // if (typeof fields["name"] !== "undefined") {
+    //   if (!fields["name"].match(/^[a-zA-Z]+$/)) {
+    //     formIsValid = false;
+    //     errors["name"] = "Only letters";
+    //   }
+    // }
+
+    this.setState({ errors: errors });
+    return formIsValid;
+  }
+
+  contactSubmit(e) {
+    e.preventDefault();
+
+    if (this.handleValidation()) {
+      alert("Form submitted");
+    } else {
+      alert("Form has errors.");
+    }
+  }
+
+
+  handleChange = (field, event) => {
+    let fields = this.state.fields;
+    fields[field] = event.target.value;
+    this.setState({ fields });
     this.setState({ taskValue: event.target.value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
+    if (!this.handleValidation()) {
+      alert("Form has errors.");
+    }
+
     let arr = this.state.tasks;
     arr.push(this.state.taskValue);
     this.setState({ tasks: arr });
@@ -46,13 +87,15 @@ class App extends React.Component {
         <img className="feather" src={feather} alt="feather" />
 
         <section className="container">
-          <form className="head" onSubmit={this.handleSubmit}>
+          <form className="head" onSubmit={this.handleSubmit.bind(this)}>
             <input
               type="text"
               placeholder="enter you task"
               className="inpHead"
-              onChange={this.handleChange}
-            />
+              onChange={this.handleChange.bind(this,"name")}
+              value={this.state.fields["name"]}/>
+            <span className="span-error" style={{ color: "red" }}>{this.state.errors["name"]}</span>
+
             <button className="btnHead"> add </button>
           </form>
           <div className="lists">

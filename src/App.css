@@ -105,7 +105,9 @@ p,
 button {
   cursor: pointer;
 }
-
+.span-error {
+  width: 25%;
+}
 .attach {
   width: 30px;
   display: none;
