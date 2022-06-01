@@ -25,6 +25,14 @@ class App extends React.Component {
       errors["name"] = "Cannot be empty";
     }
 
+
+ if (fields["name"] === this.state.taskValue) {
+      formIsValid = false;
+      errors["name"] = "unique";
+    }
+
+
+
     // if (typeof fields["name"] !== "undefined") {
     //   if (!fields["name"].match(/^[a-zA-Z]+$/)) {
     //     formIsValid = false;
@@ -36,18 +44,8 @@ class App extends React.Component {
     return formIsValid;
   }
 
-  contactSubmit(e) {
-    e.preventDefault();
-
-    if (this.handleValidation()) {
-      alert("Form submitted");
-    } else {
-      alert("Form has errors.");
-    }
-  }
-
-
   handleChange = (field, event) => {
+   
     let fields = this.state.fields;
     fields[field] = event.target.value;
     this.setState({ fields });
@@ -60,6 +58,7 @@ class App extends React.Component {
       alert("Form has errors.");
     }
 
+ 
     let arr = this.state.tasks;
     arr.push(this.state.taskValue);
     this.setState({ tasks: arr });
@@ -108,8 +107,7 @@ class App extends React.Component {
                     <button className="btnEdit">edit</button>
                     <button
                       className="btnDelete"
-                      onClick={() => this.deleteItem(index)}
-                    >
+                      onClick={() => this.deleteItem(index)}>
                       delete
                     </button>
                   </div>
