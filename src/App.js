@@ -24,14 +24,6 @@ class App extends React.Component {
       formIsValid = false;
       errors["name"] = "Cannot be empty";
     }
-
-    // if (typeof fields["name"] !== "undefined") {
-    //   if (!fields["name"].match(/^[a-zA-Z]+$/)) {
-    //     formIsValid = false;
-    //     errors["name"] = "Only letters";
-    //   }
-    // }
-
     this.setState({ errors: errors });
     return formIsValid;
   }
@@ -93,11 +85,15 @@ class App extends React.Component {
               onChange={this.handleChange.bind(this, "name")}
               value={this.state.fields["name"]}
             />
-            <span className="span-error" style={{ color: "red" }}>
-              {this.state.errors["name"]}
-            </span>
             <button className="btnHead"> add </button>
           </form>
+          <span
+            className="span-error"
+            style={{ color: "#c43636" }}
+          >
+            <mark>{this.state.errors["name"]}</mark>
+          </span>
+
           <div className="lists">
             {list.map((element, index) => (
               <div className="listItem">

@@ -77,6 +77,9 @@
   .attach {
     display: block;
   }
+  .span-error {
+    font-size: 10px;
+  }
 }
 
 @media screen and (max-width: 575.98px) {

@@ -105,8 +105,11 @@ p,
 button {
   cursor: pointer;
 }
-.span-error {
-  width: 25%;
+mark {
+  color: #fff;
+  background-color: #c43636;
+  font-size: 12px;
+  font-weight: 700;
 }
 .attach {
   width: 30px;
