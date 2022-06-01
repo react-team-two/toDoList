@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import "./media.css";
 import feather from "./images/feather.png";
 import attach from "./images/attach.png";
 
 class App extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +47,6 @@ class App extends React.Component {
     }
   }
 
-
   handleChange = (field, event) => {
     let fields = this.state.fields;
     fields[field] = event.target.value;
@@ -80,8 +80,11 @@ class App extends React.Component {
     localStorage.setItem("toDoList", JSON.stringify(filterArr));
   };
 
+
+
   render() {
     const list = JSON.parse(localStorage?.getItem("toDoList")) || [];
+    
     return (
       <>
         <img className="feather" src={feather} alt="feather" />
@@ -92,18 +95,29 @@ class App extends React.Component {
               type="text"
               placeholder="enter you task"
               className="inpHead"
-              onChange={this.handleChange.bind(this,"name")}
-              value={this.state.fields["name"]}/>
+              onChange={this.handleChange.bind(this, "name")}
+              value={this.state.fields["name"]}
+            />
 
             <button className="btnHead"> add </button>
           </form>
-          <span className="span-error" style={{ color: "red" }}>{this.state.errors["name"]}</span>
+          <span className="span-error" style={{ color: "red" }}>
+            {this.state.errors["name"]}
+          </span>
 
           <div className="lists">
-            {list.map((element, index) => (
+            {
+            list.map((element, index) => (
               <div className="listItem">
                 <div className="box">
-                  <p> {element}</p>
+                  <p className={this.state.checkbox ? 'checked' : 'notchecked'}>
+                    <input
+                      type={"checkbox"}
+                      // checked={checked}
+                      // onChange={() => setChecked(!checked)}
+                    />{" "}
+                    {element}
+                  </p>
                   <div>
                     <button className="btnEdit">edit</button>
                     <button
@@ -114,7 +128,7 @@ class App extends React.Component {
                     </button>
                   </div>
                 </div>
-                <img className="attach" src={attach} alt="attach"/>
+                <img className="attach" src={attach} alt="attach" />
               </div>
             ))}
           </div>

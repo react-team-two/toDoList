@@ -132,3 +132,10 @@ mark {
   align-items: center;
   width: 100%;
 }
+.listItem .checked {
+  text-decoration: line-through;
+}
+
+.listItem .notchecked {
+  text-decoration: none;
+}
