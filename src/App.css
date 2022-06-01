@@ -1,65 +1,105 @@
-.container{
-    width: 70vw;
-    border: 2px solid var(--main-color);
-    border-radius: 5px;
-    margin: 40px auto;
-    padding: 2rem;
+.container {
+  width: 70vw;
+  /* border: 2px solid #9adbf8; */
+  /* border-radius: 50px 0 50px 0; */
+  margin: 2rem auto;
+  padding: 3rem;
+  /* background-color: #fff; */
+  min-height: 88vh;
 }
 
 /* start head */
-
-.inpHead{
-    width: 85%;
-    border: 1px solid var(--main-color);
-    border-right: 0px ;
-    border-radius: 3px 0 0 3px;
-    padding: 5px;
-    outline: none;
+form {
+  height: 60px;
 }
 
-.btnHead{
-   width: 15%;
-    border-radius: 0px 3px 3px 0px;
-    padding: 5px; 
-    border: none;
-    border: 1px solid var(--main-color);
-    color: var(--main-color);
-    border-left: 0px;
+.inpHead {
+  width: 85%;
+  border: none;
+  border-right: 0px;
+  border-radius: 3px 0 0 3px;
+  padding: 0 1.5rem;
+  outline: none;
+  height: 100%;
+}
 
+.btnHead {
+  height: 100%;
+  width: 15%;
+  border-radius: 0px 3px 3px 0px;
+  padding: 5px;
+  border: none;
+  /* border: 1px solid var(--main-color); */
+  /* color: var(--main-color); */
+  border-left: 0px;
+  background: #9a622d;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 3px;
 }
 
 
 /* start lists */
 
-.lists{
-    margin-top: 10px;
-}
-.listItem{
-    border: 1px solid var(--sub-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    padding: 3px;
-    border-radius: 3px;
-
+.lists {
+  margin-top: 10px;
 }
 
-.btnEdit{
-    border: 1px solid #080;
-    color: #080;
-    background: none;
-    padding: 2px 5px;
-    border-radius: 3px;
-    margin: 3px;
+.listItem {
+  /* border: 1px solid #000; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 3px;
+  padding: 3px 3px 3px 1.5rem;
+  height: 45px;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px #9a622d;
 }
 
-.btnDelete{
-    border: 1px solid #f00;
-    color: #f00;
-    background: none;
-    padding: 2px 5px;
-    border-radius: 3px;
-    margin: 3px;
+.btnEdit {
+  border: 1px solid #217221;
+  color: #217221;
+  background: none;
+  padding: 8px 1.3rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  margin: 3px;
+}
 
+.btnDelete {
+  border: 1px solid #c43636;
+  color: #c43636;
+  background: none;
+  padding: 8px 1.3rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  margin: 3px;
+
+}
+
+img {
+  width: 300px;
+  position: fixed;
+  top: 50%;
+  z-index: -1;
+}
+
+p,
+.inpHead,
+.inpHead::placeholder {
+  text-transform: capitalize;
+  color: #9A622D;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+button {
+  cursor: pointer;
 }
