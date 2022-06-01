@@ -107,6 +107,9 @@ button {
 }
 .span-error {
   width: 25%;
+
+  margin-left: 23px;
+
 }
 .attach {
   width: 30px;

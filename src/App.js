@@ -94,10 +94,11 @@ class App extends React.Component {
               className="inpHead"
               onChange={this.handleChange.bind(this,"name")}
               value={this.state.fields["name"]}/>
-            <span className="span-error" style={{ color: "red" }}>{this.state.errors["name"]}</span>
 
             <button className="btnHead"> add </button>
           </form>
+          <span className="span-error" style={{ color: "red" }}>{this.state.errors["name"]}</span>
+
           <div className="lists">
             {list.map((element, index) => (
               <div className="listItem">
