@@ -24,6 +24,14 @@ class App extends React.Component {
       formIsValid = false;
       errors["name"] = "Cannot be empty";
     }
+
+    // if (typeof fields["name"] !== "undefined") {
+    //   if (!fields["name"].match(/^[a-zA-Z]+$/)) {
+    //     formIsValid = false;
+    //     errors["name"] = "Only letters";
+    //   }
+    // }
+
     this.setState({ errors: errors });
     return formIsValid;
   }
@@ -37,6 +45,7 @@ class App extends React.Component {
       alert("Form has errors.");
     }
   }
+
 
   handleChange = (field, event) => {
     let fields = this.state.fields;
@@ -70,67 +79,34 @@ class App extends React.Component {
     this.setState({ tasks: filterArr });
     localStorage.setItem("toDoList", JSON.stringify(filterArr));
   };
-  
-  /**Start... Edit Task */
-  editItem =(i)=>{
-    let tasktitle=this.refs["taskName"];
-      tasktitle.setAttribute("contenteditable","true");
-    
-      let check = this.refs["doneEdit"];
-      check.style.display='block';
-  }
-  checkDone =(i) =>{
-
-    const listofItem = JSON.parse(localStorage.getItem("toDoList"));
-    const valuetoEdit = listofItem.filter((element,index)=> index ===i);
-
-    let tasktitle=this.refs["taskName"];
-    tasktitle.setAttribute("contenteditable","false");
-    listofItem.splice(listofItem.indexOf(valuetoEdit[0]),1,tasktitle.textContent); 
-    localStorage.setItem('toDoList', JSON.stringify(listofItem));
-
-    let check = this.refs["doneEdit"];
-    check.style.display='none';
-
-    this.setState({ tasks: listofItem });
-  }
-/**End... Edit Task */
 
   render() {
     const list = JSON.parse(localStorage?.getItem("toDoList")) || [];
     return (
       <>
         <img className="feather" src={feather} alt="feather" />
+
         <section className="container">
           <form className="head" onSubmit={this.handleSubmit.bind(this)}>
             <input
               type="text"
               placeholder="enter you task"
               className="inpHead"
-              onChange={this.handleChange.bind(this, "name")}
-              value={this.state.fields["name"]}
-            />
+              onChange={this.handleChange.bind(this,"name")}
+              value={this.state.fields["name"]}/>
+
             <button className="btnHead"> add </button>
           </form>
-          <span
-            className="span-error"
-            style={{ color: "#c43636" }}
-          >
-            <mark>{this.state.errors["name"]}</mark>
-          </span>
+          <span className="span-error" style={{ color: "red" }}>{this.state.errors["name"]}</span>
 
           <div className="lists">
             {list.map((element, index) => (
               <div className="listItem">
                 <div className="box">
-                   <div>
-                     <p ref="taskName"> {element}</p>
-                     <button className="btnDone" ref="doneEdit" onClick={()=>this.checkDone(index)}>Done</button>
-                   </div>
-
+                  <p> {element}</p>
                   <div>
-                    <button ref='btnEdit' className="btnEdit" onClick={()=> this.editItem(index)}>edit</button>
-                    <button ref='btnDelete'
+                    <button className="btnEdit">edit</button>
+                    <button
                       className="btnDelete"
                       onClick={() => this.deleteItem(index)}
                     >
@@ -138,7 +114,7 @@ class App extends React.Component {
                     </button>
                   </div>
                 </div>
-                <img className="attach" src={attach} alt="attach" />
+                <img className="attach" src={attach} alt="attach"/>
               </div>
             ))}
           </div>
