@@ -19,6 +19,7 @@ body {
   background-image: url(../src/images/bg.avif);
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 95vh;
 }
 
 code {

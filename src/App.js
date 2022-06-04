@@ -10,39 +10,15 @@ class App extends React.Component {
     this.state = {
       tasks: [],
       taskValue: "",
-      fields: {},
-      errors: {},
     };
   }
-  handleValidation() {
-    let fields = this.state.fields;
-    let errors = {};
-    let formIsValid = true;
 
-    //name
-    if (!fields["name"]) {
-      formIsValid = false;
-      errors["name"] = "Cannot be empty";
-    }
-
-
-    this.setState({ errors: errors });
-    return formIsValid;
-  }
-
-  handleChange = (field, event) => {
-    let fields = this.state.fields;
-    fields[field] = event.target.value;
-    this.setState({ fields });
+  handleChange = (event) => {
     this.setState({ taskValue: event.target.value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (!this.handleValidation()) {
-      alert("Form has errors.");
-    }
-
     let arr = this.state.tasks;
     arr.push(this.state.taskValue);
     this.setState({ tasks: arr });
@@ -63,33 +39,6 @@ class App extends React.Component {
     localStorage.setItem("toDoList", JSON.stringify(filterArr));
   };
 
-  /**Start... Edit Task */
-  editItem = (i) => {
-    let tasktitle = this.refs["taskName"];
-    tasktitle.setAttribute("contenteditable", "true");
-
-    let check = this.refs["doneEdit"];
-    check.style.display = "block";
-  };
-  checkDone = (i) => {
-    const listofItem = JSON.parse(localStorage.getItem("toDoList"));
-    const valuetoEdit = listofItem.filter((element, index) => index === i);
-
-    let tasktitle = this.refs["taskName"];
-    tasktitle.setAttribute("contenteditable", "false");
-    listofItem.splice(
-      listofItem.indexOf(valuetoEdit[i]),
-      1,
-      tasktitle.textContent
-    );
-    localStorage.setItem("toDoList", JSON.stringify(listofItem));
-
-    let check = this.refs["doneEdit"];
-    check.style.display = "none";
-
-    this.setState({ tasks: listofItem });
-  };
-  /**End... Edit Task */
 
   render() {
     const list = JSON.parse(localStorage?.getItem("toDoList")) || [];
@@ -98,49 +47,37 @@ class App extends React.Component {
         <img className="feather" src={feather} alt="feather" />
 
         <section className="container">
-          <form className="head" onSubmit={this.handleSubmit.bind(this)}>
+          <form className="head" onSubmit={this.handleSubmit}>
             <input
               type="text"
               placeholder="enter you task"
               className="inpHead"
-              onChange={this.handleChange.bind(this, "name")}
-              value={this.state.fields["name"]}
+              onChange={this.handleChange}
+              value={this.state.taskValue}
             />
 
             <button className="btnHead"> add </button>
           </form>
-          <span className="span-error">
-            <mark>{this.state.errors["name"]}</mark>
-          </span>
+          
 
           <div className="lists">
             {list.map((element, index) => (
               <div className="listItem">
                 <div className="box">
                   <div>
-                    <p ref="taskName">
-                      {" "}
+                    <p>
                       <input type={"checkbox"} /> {element}
                     </p>
-                    <button
-                      className="btnDone"
-                      ref="doneEdit"
-                      onClick={() => this.checkDone(index)}
-                    >
-                      Done
-                    </button>
                   </div>
 
                   <div>
                     <button
-                      ref="btnEdit"
                       className="btnEdit"
-                      onClick={() => this.editItem(index)}
+                      onClick={() => {}}
                     >
                       edit
                     </button>
                     <button
-                      ref="btnDelete"
                       className="btnDelete"
                       onClick={() => this.deleteItem(index)}
                     >

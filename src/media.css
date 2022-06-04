@@ -16,7 +16,9 @@
   }
 
   .btnEdit,
-  .btnDelete {
+  .btnDelete,
+  .btnUpdate,
+  .btnCancel {
     font-size: 12px;
     padding: 6px 1rem;
   }
@@ -44,7 +46,9 @@
   }
 
   .btnEdit,
-  .btnDelete {
+  .btnDelete,
+  .btnUpdate,
+  .btnCancel {
     font-size: 12px;
     padding: 8px 1rem;
   }
@@ -65,7 +69,9 @@
   }
 
   .btnEdit,
-  .btnDelete {
+  .btnDelete,
+  .btnUpdate,
+  .btnCancel {
     font-size: 8px;
     padding: 5px 1rem;
   }
@@ -77,6 +83,7 @@
   .attach {
     display: block;
   }
+
   .span-error {
     font-size: 10px;
   }
