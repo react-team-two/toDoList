@@ -2,8 +2,7 @@ import React from "react";
 import "./App.css";
 import "./media.css";
 import feather from "./images/feather.png";
-import attach from "./images/attach.png";
-
+import ListTasks from "./components/ListTasks";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +37,11 @@ class App extends React.Component {
     this.setState({ tasks: filterArr });
     localStorage.setItem("toDoList", JSON.stringify(filterArr));
   };
-
+  changeTasks=(val,index)=>{
+    const filterA= this.state.tasks.map((element,po)=>index===po?element=val:element);
+    this.setState({ tasks: filterA });
+    console.log(`tasks= ${this.state.tasks}, index=${index}, val= ${val}, filterArr= ${filterA}`);
+  }
 
   render() {
     const list = JSON.parse(localStorage?.getItem("toDoList")) || [];
@@ -62,31 +65,7 @@ class App extends React.Component {
 
           <div className="lists">
             {list.map((element, index) => (
-              <div className="listItem">
-                <div className="box">
-                  <div>
-                    <p>
-                      <input type={"checkbox"} /> {element}
-                    </p>
-                  </div>
-
-                  <div>
-                    <button
-                      className="btnEdit"
-                      onClick={() => {}}
-                    >
-                      edit
-                    </button>
-                    <button
-                      className="btnDelete"
-                      onClick={() => this.deleteItem(index)}
-                    >
-                      delete
-                    </button>
-                  </div>
-                </div>
-                <img className="attach" src={attach} alt="attach" />
-              </div>
+              <ListTasks element={element} index={index} delete={this.deleteItem} changeTasks={this.changeTasks}/>
             ))}
           </div>
         </section>
