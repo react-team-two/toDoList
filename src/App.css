@@ -1,4 +1,4 @@
-.container {
+.container{
   width: 70vw;
   border: 2px solid var(--main-color);
   border-radius: 5px;
@@ -7,41 +7,34 @@
 }
 
 /* start head */
-.container {
-  position: relative;
-}
-.btn-head {
-  width: 30px;
-  height: 25px;
-  position: absolute;
-  left: 2px;
-  top: 33px;
-}
-.inpHead {
+
+.inpHead{
   width: 85%;
   border: 1px solid var(--main-color);
-  border-right: 0px;
+  border-right: 0px ;
   border-radius: 3px 0 0 3px;
   padding: 5px;
   outline: none;
 }
 
-.btnHead {
-  width: 15%;
+.btnHead{
+ width: 15%;
   border-radius: 0px 3px 3px 0px;
-  padding: 5px;
+  padding: 5px; 
   border: none;
   border: 1px solid var(--main-color);
   color: var(--main-color);
   border-left: 0px;
+
 }
+
 
 /* start lists */
 
-.lists {
+.lists{
   margin-top: 10px;
 }
-.listItem {
+.listItem{
   border: 1px solid var(--sub-color);
   display: flex;
   justify-content: space-between;
@@ -49,9 +42,10 @@
   margin-top: 10px;
   padding: 3px;
   border-radius: 3px;
+
 }
 
-.btnEdit {
+.btnEdit{
   border: 1px solid #080;
   color: #080;
   background: none;
@@ -60,18 +54,12 @@
   margin: 3px;
 }
 
-.btnDelete {
+.btnDelete{
   border: 1px solid #f00;
   color: #f00;
   background: none;
   padding: 2px 5px;
   border-radius: 3px;
   margin: 3px;
-}
-.listItem .checked {
-  text-decoration: line-through;
-}
 
-.listItem .notchecked {
-  text-decoration: none;
 }
